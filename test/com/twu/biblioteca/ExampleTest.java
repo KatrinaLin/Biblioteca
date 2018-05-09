@@ -16,5 +16,8 @@ public class ExampleTest {
          assertEquals("Main menu\n1. List Books", BibliotecaApp.displayMainMenu());
     }
 
-
+    @Test
+    public void should_return_invalid_option_message() {
+        assertEquals("Select a valid option!", BibliotecaApp.invalidOptionMessage());
+    }
 }

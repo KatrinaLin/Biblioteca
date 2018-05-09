@@ -20,4 +20,8 @@ public class BibliotecaApp {
     public static String displayMainMenu() {
         return "Main menu\n1. List Books";
     }
+
+    public static String invalidOptionMessage() {
+        return "Select a valid option!";
+    }
 }
