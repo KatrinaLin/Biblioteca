@@ -1,7 +1,6 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -63,6 +62,5 @@ public class BibliotecaApp {
     public static boolean isValidOption(String input) {
         return validOptions.contains(Integer.valueOf(input));
     }
-
 
 }
