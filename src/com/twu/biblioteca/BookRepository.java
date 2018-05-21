@@ -39,7 +39,7 @@ public class BookRepository {
 
         bookMap.put(bookName, book);
 
-        System.out.println("Thank you! Enjoy the book");
+        System.out.println("Thank you! Enjoy the book.");
     }
 
     public void returnBook(String bookName) {
@@ -56,5 +56,12 @@ public class BookRepository {
         bookMap.put(bookName, book);
 
         System.out.println("Thank you for returning the book.");
+    }
+
+    public void displayAvailableBookList() {
+        bookMap.values()
+                .stream()
+                .filter(x -> x.isAvailable())
+                .forEach(x -> System.out.println(x));
     }
 }

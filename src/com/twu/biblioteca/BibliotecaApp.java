@@ -9,15 +9,12 @@ public class BibliotecaApp {
 
     private static List<Integer> validOptions = new ArrayList<>();
 
-    private static HashMap<String, Book> bookMap;
+    private static BookRepository bookRepository = new BookRepository();
 
     public static void main(String[] args) {
 
-        BookRepository bookRepository = new BookRepository();
-
-        bookMap = bookRepository.getBookMap();
-
         addValidOptions(1);
+
         startApp();
     }
 
@@ -35,11 +32,11 @@ public class BibliotecaApp {
 
             if (!isValidOption(input)) {
                 displayInvalidOptionMessage();
-                displayMainMenu();
             } else {
-                displayAvailableBookList();
+                bookRepository.displayAvailableBookList();
             }
 
+            displayMainMenu();
         }
 
         scanner.close();
@@ -65,13 +62,6 @@ public class BibliotecaApp {
 
     public static boolean isValidOption(String input) {
         return validOptions.contains(Integer.valueOf(input));
-    }
-
-    public static void displayAvailableBookList() {
-        bookMap.values()
-                .stream()
-                .filter(x -> x.isAvailable())
-                .forEach(x -> System.out.println(x));
     }
 
 
