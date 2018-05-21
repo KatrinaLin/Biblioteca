@@ -2,9 +2,10 @@ package com.twu.biblioteca;
 
 public class Book {
 
-    private final String name;
-    private final String author;
-    private final String yearPublished;
+    private String name;
+    private String author;
+    private String yearPublished;
+    private boolean isAvailable = true;
 
     public Book(String name, String author, String yearPublished) {
         this.name = name;
@@ -22,5 +23,18 @@ public class Book {
 
     public String getYearPublished() {
         return yearPublished;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    @Override
+    public String toString() {
+        return "Bookname: " + name + " | Author: " + author + " | Year Published: " + yearPublished;
     }
 }

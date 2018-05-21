@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,7 +9,13 @@ public class BibliotecaApp {
 
     private static List<Integer> validOptions = new ArrayList<>();
 
+    private static HashMap<String, Book> bookMap;
+
     public static void main(String[] args) {
+
+        BookRepository bookRepository = new BookRepository();
+
+        bookMap = bookRepository.getBookMap();
 
         addValidOptions(1);
         startApp();
@@ -17,9 +24,6 @@ public class BibliotecaApp {
     private static void startApp() {
         displayWelcomeMessage();
         displayMainMenu();
-
-        //addValidOptions(1);
-
 
         Scanner scanner = new Scanner(System.in);
 
@@ -31,8 +35,9 @@ public class BibliotecaApp {
 
             if (!isValidOption(input)) {
                 displayInvalidOptionMessage();
+                displayMainMenu();
             } else {
-
+                displayAvailableBookList();
             }
 
         }
@@ -47,6 +52,7 @@ public class BibliotecaApp {
 
     public static void displayMainMenu() {
         System.out.println("Main menu\n1. List Books");
+        System.out.println("Type \"Quit\" to quit the app.");
     }
 
     public static void displayInvalidOptionMessage() {
@@ -60,4 +66,13 @@ public class BibliotecaApp {
     public static boolean isValidOption(String input) {
         return validOptions.contains(Integer.valueOf(input));
     }
+
+    public static void displayAvailableBookList() {
+        bookMap.values()
+                .stream()
+                .filter(x -> x.isAvailable())
+                .forEach(x -> System.out.println(x));
+    }
+
+
 }

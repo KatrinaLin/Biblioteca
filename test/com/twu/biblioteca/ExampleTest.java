@@ -38,7 +38,7 @@ public class ExampleTest {
     @Test
     public void should_display_main_menu() {
         BibliotecaApp.displayMainMenu();
-        assertEquals("Main menu\n1. List Books\n", outContent.toString());
+        assertEquals("Main menu\n1. List Books\nType \"Quit\" to quit the app.\n", outContent.toString());
     }
 
     @Test
